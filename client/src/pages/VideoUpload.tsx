@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { ADD_VIDEO } from "../mutations/VideoMutations";
+import { ADD_A_VIDEO } from "../mutations/VideoMutations";
 import { GET_VIDEOS } from "../queries/VideoQueries";
 import { VideoType } from "../types/VideoTypes";
 
@@ -13,7 +13,7 @@ function VideoUpload() {
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [name, setName] = useState("");
 
-  const [addVideo] = useMutation(ADD_VIDEO, {
+  const [addVideo] = useMutation(ADD_A_VIDEO, {
     variables: { name, thumbnailUrl, url },
     update(cache, { data: { addVideo } }) {
       const { videos } = cache.readQuery({ query: GET_VIDEOS }) as {
