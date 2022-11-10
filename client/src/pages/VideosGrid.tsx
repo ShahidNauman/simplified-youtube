@@ -5,6 +5,7 @@ import VideosGridItem from "../components/VideosGridItem";
 import { VideoType } from "../types/VideoTypes";
 import { GET_VIDEOS } from "../queries/VideoQueries";
 import Spinner from "react-bootstrap/Spinner";
+import { SERVER_BASE_URL } from "../configurations/AppConfigs";
 
 function VideosGrid() {
   const { loading, error, data } = useQuery(GET_VIDEOS);
@@ -32,8 +33,8 @@ function VideosGrid() {
               <VideosGridItem
                 id={aVideo.id}
                 name={aVideo.name}
-                thumbnailUrl={aVideo.thumbnailUrl}
-                url={aVideo.url}
+                thumbnailUrl={`${SERVER_BASE_URL}${aVideo.thumbnailUrl}`}
+                url={`${SERVER_BASE_URL}${aVideo.url}`}
               />
             </Col>
           ))}

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const path = require("path");
 const { graphqlHTTP } = require("express-graphql");
 const { graphqlUploadExpress } = require("graphql-upload");
 require("dotenv").config();
@@ -18,6 +19,7 @@ app.use(
       process.env.NODE_ENV === "development" ? false : undefined,
   })
 );
+app.use("/uploads/", express.static(path.join(__dirname, "../uploads/")));
 app.use(
   "/graphql",
   graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }),

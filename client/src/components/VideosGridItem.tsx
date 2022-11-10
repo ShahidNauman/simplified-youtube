@@ -12,7 +12,11 @@ function VideosGridItem({ id, name, thumbnailUrl, url }: VideoType) {
       onClick={(e) => navigate(`/video/${id}`)}
       style={{ cursor: "pointer" }}
     >
-      <Card.Img variant='top' src={thumbnailUrl || VideoPlaceholder} />
+      <Card.Img
+        variant='top'
+        src={thumbnailUrl || VideoPlaceholder}
+        crossOrigin='anonymous'
+      />
       <Card.Body>
         <Card.Title>{name || "Untitled"}</Card.Title>
       </Card.Body>

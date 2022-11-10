@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { Row, Col } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import { GET_A_VIDEO } from "../queries/VideoQueries";
+import { SERVER_BASE_URL } from "../configurations/AppConfigs";
 
 function VideoPlay() {
   const { id } = useParams();
@@ -23,7 +24,13 @@ function VideoPlay() {
         <>
           <Row>
             <Col xl={6}>
-              <video src={data.video.url} className='w-100' autoPlay controls />
+              <video
+                src={`${SERVER_BASE_URL}${data.video.url}`}
+                className='w-100'
+                autoPlay
+                controls
+                crossOrigin='anonymous'
+              />
             </Col>
           </Row>
           <Row>

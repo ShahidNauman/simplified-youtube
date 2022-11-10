@@ -3,6 +3,7 @@ const {
   GraphQLScalarType,
   GraphQLBoolean,
   GraphQLString,
+  GraphQLList,
 } = require("graphql");
 
 const FileUploadType = new GraphQLScalarType({
@@ -19,9 +20,9 @@ const FileUploadResponseType = new GraphQLObjectType({
   fields: () => ({
     succeed: { type: GraphQLBoolean },
     message: { type: GraphQLString },
+    urls: { type: new GraphQLList(GraphQLString) },
     failed: { type: GraphQLBoolean },
     error: { type: GraphQLString },
-    token: { type: GraphQLString },
   }),
 });
 
